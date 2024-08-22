@@ -1,110 +1,161 @@
-/* General Styles */
+/* styles.css */
+
+/* Reset some default styles */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* General styles */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
     color: #333;
+    background-color: #f4f4f4;
 }
 
-/* Container */
 .container {
-    max-width: 1200px;
+    width: 80%;
     margin: 0 auto;
-    padding: 0 20px;
+    overflow: hidden;
 }
 
-/* Header */
+/* Header styles */
 header {
-    background-color: #007BFF;
+    background: #333;
     color: #fff;
-    padding: 20px 0; /* Increased padding for more space */
+    padding: 10px 0;
 }
 
-header .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-height: 80px; /* Ensures header has enough height */
-}
-
-header h1.logo {
-    margin: 0;
-    font-size: 24px;
-    font-weight: bold;
+header .logo {
+    float: left;
 }
 
 header nav ul {
+    float: right;
     list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
 }
 
 header nav ul li {
+    display: inline;
     margin-left: 20px;
 }
 
 header nav ul li a {
     color: #fff;
     text-decoration: none;
-    font-size: 16px;
 }
 
-header nav ul li a:hover {
-    text-decoration: underline;
-}
-
-/* Hero Section */
+/* Hero Section styles */
 .hero {
-    background-color: #f4f4f4;
-    padding: 60px 20px;
+    background: #007bff;
+    color: #fff;
+    padding: 50px 0;
     text-align: center;
 }
 
 .hero h2 {
-    font-size: 36px;
+    font-size: 2.5em;
     margin-bottom: 20px;
 }
 
 .hero p {
-    font-size: 18px;
+    font-size: 1.2em;
     margin-bottom: 30px;
 }
 
-.hero .btn-primary {
-    padding: 15px 30px;
-    font-size: 18px;
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
     color: #fff;
-    background-color: #007BFF;
-    border: none;
-    border-radius: 5px;
+    background: #007bff;
     text-decoration: none;
+    border-radius: 5px;
 }
 
-.hero .btn-primary:hover {
-    background-color: #0056b3;
+.btn-primary {
+    background: #007bff;
 }
 
-/* Footer */
+.btn-primary:hover {
+    background: #0056b3;
+}
+
+.big-download {
+    font-size: 1.5em;
+    padding: 15px 30px;
+}
+
+/* Features Section styles */
+.features {
+    padding: 40px 0;
+    background: #fff;
+    text-align: center;
+}
+
+.features h2 {
+    margin-bottom: 20px;
+}
+
+.feature-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.feature-item {
+    flex: 1;
+    min-width: 200px;
+    margin: 15px;
+}
+
+/* How It Works Section styles */
+.how-it-works {
+    background: #f4f4f4;
+    padding: 40px 0;
+    text-align: center;
+}
+
+.how-it-works .steps {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.step {
+    flex: 1;
+    min-width: 200px;
+    margin: 15px;
+}
+
+/* Download Section styles */
+.download {
+    padding: 40px 0;
+    text-align: center;
+}
+
+.download h2 {
+    margin-bottom: 20px;
+}
+
+/* Footer styles */
 footer {
-    background-color: #333;
+    background: #333;
     color: #fff;
     padding: 20px 0;
     text-align: center;
 }
 
-footer .footer-links a {
+.footer-links {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
     color: #fff;
-    margin: 0 10px;
     text-decoration: none;
 }
 
-footer .footer-links a:hover {
+.footer-links a:hover {
     text-decoration: underline;
-}
-
-footer p {
-    margin: 10px 0;
 }

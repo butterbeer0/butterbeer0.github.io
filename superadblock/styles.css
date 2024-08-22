@@ -29,13 +29,16 @@ header {
     padding: 10px 0;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center; /* Center content horizontally */
 }
 
 header .container {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
+    max-width: 1200px; /* Adjust the max-width to fit your design */
+    margin: 0 auto; /* Center the container within the header */
 }
 
 header .logo {
@@ -63,14 +66,12 @@ header nav ul li a {
     text-decoration: none;
     display: block;
     padding: 10px;
-    line-height: 1.5; /* Ensure vertical alignment */
 }
 
 header nav ul li a:hover {
     background: #555;
     border-radius: 5px;
 }
-
 
 /* Hero Section styles */
 .hero {

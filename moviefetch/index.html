@@ -92,8 +92,7 @@
                 const iframe = document.createElement('iframe');
                 iframe.src = videoURL;
                 iframe.allowFullscreen = true;
-                iframe.sandbox = 'allow-same-origin allow-scripts';
-
+              
                 const videoContainer = document.getElementById('videoContainer');
                 videoContainer.innerHTML = '';  
                 videoContainer.appendChild(iframe);

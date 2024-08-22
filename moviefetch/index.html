@@ -87,10 +87,11 @@
 
         function embedVideo(imdbID) {
             if (imdbID) {
-                const videoURL = `https://vidsrc.xyz/embed/movie/?imdb=${imdbID}`;
+                const videoURL = `https://vidsrc.xyz/embed/movie/${imdbID}`;
 
                 const iframe = document.createElement('iframe');
                 iframe.src = videoURL;
+                iframe.sandbox = 'allow-same-origin allow-scripts';
                 iframe.allowFullscreen = true;
               
                 const videoContainer = document.getElementById('videoContainer');

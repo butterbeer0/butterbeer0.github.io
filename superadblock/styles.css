@@ -26,25 +26,42 @@ header {
     background: #333;
     color: #fff;
     padding: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }
 
 header .logo {
-    float: left;
+    font-size: 1.5em;
 }
 
 header nav ul {
-    float: right;
     list-style: none;
+    display: flex;
+    margin: 0;
 }
 
 header nav ul li {
-    display: inline;
     margin-left: 20px;
 }
 
 header nav ul li a {
     color: #fff;
     text-decoration: none;
+    display: block;
+    padding: 10px;
+}
+
+header nav ul li a:hover {
+    background: #555;
+    border-radius: 5px;
 }
 
 /* Hero Section styles */

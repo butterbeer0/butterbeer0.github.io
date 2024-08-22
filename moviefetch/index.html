@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>moviefetch</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #dcdcdc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4285F4;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        button:hover {
+            background-color: #357ae8;
+        }
+        iframe {
+            width: 100%;
+            height: 80vh;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Movie Player</h1>
+        <input type="text" id="movieName" placeholder="Enter movie name">
+        <input type="text" id="movieYear" placeholder="Enter year">
+        <button onclick="fetchIMDbID()">Play Movie</button>
+        <div id="videoContainer">
+        </div>
+    </div>
+
+    <script>
+        async function fetchIMDbID() {
+            const movieName = document.getElementById('movieName').value.trim();
+            const movieYear = document.getElementById('movieYear').value.trim();
+
+            if (movieName && movieYear) {
+                try {
+                    const apiKey = '539b133a';
+                    const response = await fetch(`https://www.omdbapi.com/?t=${encodeURIComponent(movieName)}&y=${encodeURIComponent(movieYear)}&apikey=${apiKey}`);
+                    const data = await response.json();
+
+                    if (data.Response === 'True') {
+                        const imdbID = data.imdbID;
+                        embedVideo(imdbID);
+                    } else {
+                        alert('Movie not found. Please check the name and year.');
+                    }
+                } catch (error) {
+                    alert('An error occurred while fetching IMDb ID.');
+                    console.error(error);
+                }
+            } else {
+                alert('Please enter both movie name and year.');
+            }
+        }
+
+        function embedVideo(imdbID) {
+            if (imdbID) {
+                const videoURL = `https://vidsrc.xyz/embed/movie/${imdbID}`;
+
+                const iframe = document.createElement('iframe');
+                iframe.src = videoURL;
+                iframe.allowFullscreen = true;
+                iframe.sandbox = 'allow-same-origin allow-scripts';
+
+                const videoContainer = document.getElementById('videoContainer');
+                videoContainer.innerHTML = '';  
+                videoContainer.appendChild(iframe);
+            } else {
+                alert('Invalid IMDb title ID.');
+            }
+        }
+    </script>
+</body>
+</html>

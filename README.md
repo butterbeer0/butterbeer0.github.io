@@ -17,4 +17,4 @@ Clicky is a Cookie Clicker knockoff.
 This site serves as a hub for my web development projects. Each project represents an area of my interests and skills in coding. 
 
 ## License
-This repository is licensed under the MIT License. See the LICENSE file for more details.
+This repository is licensed under the MIT License. See the [LICENSE](./LICENSE) file for more details.

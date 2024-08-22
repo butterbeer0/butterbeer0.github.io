@@ -31,12 +31,12 @@ body {
 }
 
 #click-count {
-    font-size: 32px;
-    margin-bottom: 20px;
+    font-size: 64px; /* Increased from 32px to 64px */
+    margin-bottom: 30px; /* Increased margin to accommodate larger size */
 }
 
 #click-button {
-    font-size: 100px;
+    font-size: 200px; /* Increased from 100px to 200px */
     background-color: transparent;
     border: none;
     cursor: pointer;

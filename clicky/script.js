@@ -103,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clickCount -= autoClickerCost;
             autoClickers++;
             autoClickerCost = Math.ceil(autoClickerCost * (1 + priceIncreasePercentage)); // Increase price
+            console.log(`Auto-Clicker purchased. New cost: ${autoClickerCost}`);
             updateDisplay();
         }
     });
@@ -112,6 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clickCount -= superClickerCost;
             superClickers++;
             superClickerCost = Math.ceil(superClickerCost * (1 + priceIncreasePercentage)); // Increase price
+            console.log(`Super-Clicker purchased. New cost: ${superClickerCost}`);
             updateDisplay();
         }
     });
@@ -121,6 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clickCount -= megaClickerCost;
             megaClickers++;
             megaClickerCost = Math.ceil(megaClickerCost * (1 + priceIncreasePercentage)); // Increase price
+            console.log(`Mega-Clicker purchased. New cost: ${megaClickerCost}`);
             updateDisplay();
         }
     });
@@ -130,6 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clickCount -= ultraClickerCost;
             ultraClickers++;
             ultraClickerCost = Math.ceil(ultraClickerCost * (1 + priceIncreasePercentage)); // Increase price
+            console.log(`Ultra-Clicker purchased. New cost: ${ultraClickerCost}`);
             updateDisplay();
         }
     });

@@ -11,6 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const superClickerButton = document.getElementById('super-clicker');
     const megaClickerButton = document.getElementById('mega-clicker');
     const ultraClickerButton = document.getElementById('ultra-clicker');
+    const saveButton = document.getElementById('save-button');
+    const loadButton = document.getElementById('load-button');
+    const loadInput = document.getElementById('load-input');
 
     const autoClickerCPS = document.getElementById('auto-clicker-cps');
     const superClickerCPS = document.getElementById('super-clicker-cps');
@@ -31,19 +34,38 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const saveGame = () => {
-        localStorage.setItem('autoClickers', autoClickers);
-        localStorage.setItem('superClickers', superClickers);
-        localStorage.setItem('megaClickers', megaClickers);
-        localStorage.setItem('ultraClickers', ultraClickers);
+        const gameData = JSON.stringify({
+            clickCount,
+            autoClickers,
+            superClickers,
+            megaClickers,
+            ultraClickers
+        });
+        const blob = new Blob([gameData], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'clicktopia_save.txt';
+        a.click();
+        URL.revokeObjectURL(url);
     };
 
-    const autoClick = () => {
-        clickCount += autoClickers;
-        clickCount += superClickers * 5;
-        clickCount += megaClickers * 20;
-        clickCount += ultraClickers * 100;
-        updateDisplay();
-        saveGame();
+    const loadGame = (file) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+            try {
+                const gameData = JSON.parse(reader.result);
+                clickCount = gameData.clickCount || 0;
+                autoClickers = gameData.autoClickers || 0;
+                superClickers = gameData.superClickers || 0;
+                megaClickers = gameData.megaClickers || 0;
+                ultraClickers = gameData.ultraClickers || 0;
+                updateDisplay();
+            } catch (e) {
+                alert('Failed to load game data.');
+            }
+        };
+        reader.readAsText(file);
     };
 
     clickButton.addEventListener('click', () => {
@@ -87,6 +109,30 @@ document.addEventListener('DOMContentLoaded', () => {
             saveGame();
         }
     });
+
+    saveButton.addEventListener('click', () => {
+        saveGame();
+    });
+
+    loadButton.addEventListener('click', () => {
+        loadInput.click();
+    });
+
+    loadInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            loadGame(file);
+        }
+    });
+
+    const autoClick = () => {
+        clickCount += autoClickers;
+        clickCount += superClickers * 5;
+        clickCount += megaClickers * 20;
+        clickCount += ultraClickers * 100;
+        updateDisplay();
+        saveGame();
+    };
 
     setInterval(autoClick, 1000); // Automatically clicks every second
     updateDisplay();

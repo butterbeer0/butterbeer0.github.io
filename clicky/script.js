@@ -4,14 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let superClickers = 0;
     let megaClickers = 0;
     let ultraClickers = 0;
-    const encryptionKey = 'your-encryption-key'; // Replace with a strong key
+    const encryptionKey = '2dhh3c@*/8hh3b8#!38jf!'; // Replace with a strong key
 
     // Initial costs
     let autoClickerCost = 100;
     let superClickerCost = 500;
     let megaClickerCost = 2000;
     let ultraClickerCost = 5000;
-    const priceIncreasePercentage = 0.05; // 5% increase
+    const priceIncreasePercentage = 0.02; // 2% increase
 
     const clickButton = document.getElementById('click-button');
     const clickCountElement = document.getElementById('click-count');

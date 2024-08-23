@@ -4,7 +4,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let superClickers = 0;
     let megaClickers = 0;
     let ultraClickers = 0;
-    const encryptionKey = '%)ySJCJ6Rj>F]och'; // Replace with a strong key
+    const encryptionKey = '&01qe6bc!ee7inr4$ddh7ef@#be'; // Replace with a strong key
+
+    // Initial costs
+    let autoClickerCost = 100;
+    let superClickerCost = 500;
+    let megaClickerCost = 2000;
+    let ultraClickerCost = 5000;
+    const priceIncreasePercentage = 0.05; // 5% increase
 
     const clickButton = document.getElementById('click-button');
     const clickCountElement = document.getElementById('click-count');
@@ -23,15 +30,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const updateDisplay = () => {
         clickCountElement.textContent = clickCount;
-        autoClickerButton.disabled = clickCount < 100;
-        superClickerButton.disabled = clickCount < 500;
-        megaClickerButton.disabled = clickCount < 2000;
-        ultraClickerButton.disabled = clickCount < 5000;
+        autoClickerButton.disabled = clickCount < autoClickerCost;
+        superClickerButton.disabled = clickCount < superClickerCost;
+        megaClickerButton.disabled = clickCount < megaClickerCost;
+        ultraClickerButton.disabled = clickCount < ultraClickerCost;
 
         autoClickerCPS.textContent = `+${autoClickers} CPS`;
         superClickerCPS.textContent = `+${superClickers * 5} CPS`;
         megaClickerCPS.textContent = `+${megaClickers * 20} CPS`;
         ultraClickerCPS.textContent = `+${ultraClickers * 100} CPS`;
+
+        // Update button text with current cost
+        autoClickerButton.textContent = `Auto-Clicker (Cost: ${autoClickerCost} cookies) \n${autoClickerCPS.textContent}`;
+        superClickerButton.textContent = `Super-Clicker (Cost: ${superClickerCost} cookies) \n${superClickerCPS.textContent}`;
+        megaClickerButton.textContent = `Mega-Clicker (Cost: ${megaClickerCost} cookies) \n${megaClickerCPS.textContent}`;
+        ultraClickerButton.textContent = `Ultra-Clicker (Cost: ${ultraClickerCost} cookies) \n${ultraClickerCPS.textContent}`;
     };
 
     const saveGame = () => {
@@ -40,7 +53,11 @@ document.addEventListener('DOMContentLoaded', () => {
             autoClickers,
             superClickers,
             megaClickers,
-            ultraClickers
+            ultraClickers,
+            autoClickerCost,
+            superClickerCost,
+            megaClickerCost,
+            ultraClickerCost
         });
         const encryptedData = CryptoJS.AES.encrypt(gameData, encryptionKey).toString();
         const blob = new Blob([encryptedData], { type: 'text/plain' });
@@ -64,6 +81,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 superClickers = gameData.superClickers || 0;
                 megaClickers = gameData.megaClickers || 0;
                 ultraClickers = gameData.ultraClickers || 0;
+                autoClickerCost = gameData.autoClickerCost || 100;
+                superClickerCost = gameData.superClickerCost || 500;
+                megaClickerCost = gameData.megaClickerCost || 2000;
+                ultraClickerCost = gameData.ultraClickerCost || 5000;
                 updateDisplay();
             } catch (e) {
                 alert('Failed to load game data.');
@@ -78,33 +99,37 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     autoClickerButton.addEventListener('click', () => {
-        if (clickCount >= 100) {
-            clickCount -= 100;
+        if (clickCount >= autoClickerCost) {
+            clickCount -= autoClickerCost;
             autoClickers++;
+            autoClickerCost = Math.ceil(autoClickerCost * (1 + priceIncreasePercentage)); // Increase price
             updateDisplay();
         }
     });
 
     superClickerButton.addEventListener('click', () => {
-        if (clickCount >= 500) {
-            clickCount -= 500;
+        if (clickCount >= superClickerCost) {
+            clickCount -= superClickerCost;
             superClickers++;
+            superClickerCost = Math.ceil(superClickerCost * (1 + priceIncreasePercentage)); // Increase price
             updateDisplay();
         }
     });
 
     megaClickerButton.addEventListener('click', () => {
-        if (clickCount >= 2000) {
-            clickCount -= 2000;
+        if (clickCount >= megaClickerCost) {
+            clickCount -= megaClickerCost;
             megaClickers++;
+            megaClickerCost = Math.ceil(megaClickerCost * (1 + priceIncreasePercentage)); // Increase price
             updateDisplay();
         }
     });
 
     ultraClickerButton.addEventListener('click', () => {
-        if (clickCount >= 5000) {
-            clickCount -= 5000;
+        if (clickCount >= ultraClickerCost) {
+            clickCount -= ultraClickerCost;
             ultraClickers++;
+            ultraClickerCost = Math.ceil(ultraClickerCost * (1 + priceIncreasePercentage)); // Increase price
             updateDisplay();
         }
     });

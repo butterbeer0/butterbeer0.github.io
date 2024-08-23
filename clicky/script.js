@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let superClickers = 0;
     let megaClickers = 0;
     let ultraClickers = 0;
+    const encryptionKey = 'your-encryption-key'; // Replace with a strong key
 
     const clickButton = document.getElementById('click-button');
     const clickCountElement = document.getElementById('click-count');
@@ -41,7 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
             megaClickers,
             ultraClickers
         });
-        const blob = new Blob([gameData], { type: 'text/plain' });
+        const encryptedData = CryptoJS.AES.encrypt(gameData, encryptionKey).toString();
+        const blob = new Blob([encryptedData], { type: 'text/plain' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
@@ -54,7 +56,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const reader = new FileReader();
         reader.onload = () => {
             try {
-                const gameData = JSON.parse(reader.result);
+                const encryptedData = reader.result;
+                const bytes = CryptoJS.AES.decrypt(encryptedData, encryptionKey);
+                const gameData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
                 clickCount = gameData.clickCount || 0;
                 autoClickers = gameData.autoClickers || 0;
                 superClickers = gameData.superClickers || 0;
@@ -131,4 +135,3 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(autoClick, 1000); // Automatically clicks every second
     updateDisplay();
 });
- 

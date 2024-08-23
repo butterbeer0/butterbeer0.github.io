@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let superClickers = 0;
     let megaClickers = 0;
     let ultraClickers = 0;
-    const encryptionKey = 'your-encryption-key'; // Replace with a strong key
+    const encryptionKey = '%)ySJCJ6Rj>F]och'; // Replace with a strong key
 
     const clickButton = document.getElementById('click-button');
     const clickCountElement = document.getElementById('click-count');

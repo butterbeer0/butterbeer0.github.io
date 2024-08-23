@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let superClickers = 0;
     let megaClickers = 0;
     let ultraClickers = 0;
-    const encryptionKey = '&01qe6bc!ee7inr4$ddh7ef@#be'; // Replace with a strong key
+    const encryptionKey = 'your-encryption-key'; // Replace with a strong key
 
     // Initial costs
     let autoClickerCost = 100;
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ultraClickerCPS = document.getElementById('ultra-clicker-cps');
 
     const updateDisplay = () => {
-        clickCountElement.textContent = clickCount;
+        clickCountElement.textContent = `${clickCount} Cookies`;
         autoClickerButton.disabled = clickCount < autoClickerCost;
         superClickerButton.disabled = clickCount < superClickerCost;
         megaClickerButton.disabled = clickCount < megaClickerCost;

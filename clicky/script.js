@@ -71,7 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
     clickButton.addEventListener('click', () => {
         clickCount++;
         updateDisplay();
-        saveGame();
     });
 
     autoClickerButton.addEventListener('click', () => {
@@ -79,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
             clickCount -= 100;
             autoClickers++;
             updateDisplay();
-            saveGame();
         }
     });
 
@@ -88,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
             clickCount -= 500;
             superClickers++;
             updateDisplay();
-            saveGame();
         }
     });
 
@@ -97,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
             clickCount -= 2000;
             megaClickers++;
             updateDisplay();
-            saveGame();
         }
     });
 
@@ -106,7 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
             clickCount -= 5000;
             ultraClickers++;
             updateDisplay();
-            saveGame();
         }
     });
 
@@ -131,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
         clickCount += megaClickers * 20;
         clickCount += ultraClickers * 100;
         updateDisplay();
-        saveGame();
     };
 
     setInterval(autoClick, 1000); // Automatically clicks every second

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>clicky</title>
+    <title>Clicktopia</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,6 +12,10 @@
             <div id="clicker">
                 <p><span id="click-count">0</span> Cookies</p>
                 <button id="click-button">🍪</button>
+                <br><br>
+                <button id="save-button">Save Game</button>
+                <input type="file" id="load-input" style="display: none;" />
+                <button id="load-button">Load Game</button>
             </div>
         </div>
         <div class="sidebar">
@@ -19,7 +23,7 @@
             <button id="auto-clicker" disabled>Auto-Clicker (Cost: 100 cookies) <br><span id="auto-clicker-cps">+1 CPS</span></button>
             <button id="super-clicker" disabled>Super-Clicker (Cost: 500 cookies) <br><span id="super-clicker-cps">+5 CPS</span></button>
             <button id="mega-clicker" disabled>Mega-Clicker (Cost: 2000 cookies) <br><span id="mega-clicker-cps">+20 CPS</span></button>
-             <button id="ultra-clicker" disabled>Ultra-Clicker (Cost: 5000 cookies) <br><span id="ultra-clicker-cps">+100 CPS</span></button>
+            <button id="ultra-clicker" disabled>Ultra-Clicker (Cost: 5000 cookies) <br><span id="ultra-clicker-cps">+100 CPS</span></button>
         </div>
     </div>
     <script src="script.js"></script>

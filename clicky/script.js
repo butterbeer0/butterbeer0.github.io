@@ -131,3 +131,4 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(autoClick, 1000); // Automatically clicks every second
     updateDisplay();
 });
+ 
